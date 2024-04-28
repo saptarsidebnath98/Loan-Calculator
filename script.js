@@ -17,8 +17,14 @@ btn.addEventListener('click',()=>{
     let rate = document.querySelector("#annual_interset_rate").value;
     let time = document.querySelector("#time").value;
     if(principal && rate && time){
-        console.log(calculateEMI(principal,parseFloat(rate),time));
-        p.innerHTML = `<p>&#x20B9; ${calculateEMI(principal,parseFloat(rate),time)}</p>`;
+        let result = calculateEMI(principal,parseFloat(rate),time);
+        if(result === "NaN"){
+            p.textContent = "Out of range";
+        }else{
+
+            p.innerHTML = `<p>&#x20B9; ${result}</p>`;
+        }
+        
     }
     else{
         p.textContent = "*Please fill all fields*";
